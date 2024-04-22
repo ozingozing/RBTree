@@ -16,6 +16,7 @@ rbtree *new_rbtree(void)
 void delete_rbtree(rbtree *t)
 {
   delete_node(t, t->root);
+  free(t->nil);
   free(t);
 }
 //////////////ADD
