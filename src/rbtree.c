@@ -222,8 +222,8 @@ void DeleteFixUp(rbtree *t, node_t *x)
           RightRotate(t, w);
           w = x->parent->right;
         }
-
-        w->color = x->parent->color;
+        
+        w->color = (x->parent->color == RBTREE_RED) ? RBTREE_RED : RBTREE_BLACK;
         x->parent->color = RBTREE_BLACK;
         w->right->color = RBTREE_BLACK;
         LeftRotate(t, x->parent);
@@ -255,7 +255,7 @@ void DeleteFixUp(rbtree *t, node_t *x)
           w = x->parent->left;
         }
 
-        w->color = x->parent->color;
+        w->color = (x->parent->color == RBTREE_RED) ? RBTREE_RED : RBTREE_BLACK;
         x->parent->color = RBTREE_BLACK;
         w->left->color = RBTREE_BLACK;
         RightRotate(t, x->parent);
